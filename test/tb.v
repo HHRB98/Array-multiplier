@@ -29,10 +29,10 @@ module tb ();
       .VGND(1'b0),
 `endif
 
-      .a  (a),    // Dedicated inputs
+      .a (a),    // Dedicated inputs
       .b (b),   // Dedicated outputs
       .p (p),   // IOs: Input path
       .clk(clk) //clk
-        );
+ );
 
 endmodule
