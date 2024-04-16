@@ -9,7 +9,7 @@ module FA(a, b, c, s, ca);
   assign ca = ((a & b) | (b & c) | (c & a));
 endmodule
 
-module array_multiplier (a, b, p);
+module tt_um_array_multiplier_hhrb98 (a, b, p);
   // Inputs
   input [3:0] a, b;
   // Outputs
