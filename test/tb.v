@@ -16,9 +16,11 @@ module tb ();
   reg clk;
   reg rst_n;
   reg ena;
-  reg [3:0] a;
-  reg [3:0] b;
-  reg [7:0] p;
+  reg [7:0] ui_in;
+  reg [7:0] uio_in;
+  wire [7:0] uo_out;
+  wire [7:0] uio_out;
+  wire [7:0] uio_oe;
  
   // Replace tt_um_example with your module name:
   tt_um_array_multiplier_hhrb98 user_project (
@@ -29,9 +31,9 @@ module tb ();
       .VGND(1'b0),
 `endif
 
-      .a (a),    // Dedicated inputs
-      .b (b),   // 
-      .p (p),   // 
+      .ui_in[3:0] (a),    // Dedicated inputs
+      .ui_in[7:4] (b),
+      .uo_out (p),   //  
       .ena(ena),
       .rst_n(rst_n),
       .clk    (clk)      // clock
