@@ -1,4 +1,4 @@
-`include "array_multiplier.v"
+`include "tt_um_array_multiplier_hhrb98.v"
 module array_multiplier_tb;
 
   // Definir señales de entrada y salida para el testbench
