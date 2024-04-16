@@ -25,8 +25,12 @@ module tb ();
 // Replace tt_um_example with your module name:
 tt_um_array_multiplier_hhrb98 user_project (
     // Include power ports for the Gate Level test:
-    .VPWR(1'b1),
-    .VGND(1'b0),
+   
+`ifdef GL_TEST
+      .VPWR(1'b1),
+      .VGND(1'b0),
+`endif
+   
     .a(ui_in),    // Connect ui_in directly to module's a
     .b(uio_in),   // Connect uio_in directly to module's b
     .clk(clk),    // Connect clk directly to module's clk
