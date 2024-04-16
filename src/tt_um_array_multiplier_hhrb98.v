@@ -9,7 +9,7 @@ module FA(a, b, c, s, ca);
   assign ca = ((a & b) | (b & c) | (c & a));
 endmodule
 
-module tt_um_array_multiplier_hhrb98 (ui_in, uo_out);
+module tt_um_array_multiplier_hhrb98 (ui_in, uo_out, uio_in, uio_out, uio_oe, ena,clk, rst_n);
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
