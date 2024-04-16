@@ -12,8 +12,11 @@ endmodule
 module tt_um_array_multiplier_hhrb98 (a, b, p);
   // Inputs
   input [3:0] a, b;
+  input wire clk;
   // Outputs
   output [7:0] p;
+
+  
 
   // Wires
   wire [39:0] w;
