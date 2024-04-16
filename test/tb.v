@@ -22,21 +22,16 @@ module tb ();
   wire [7:0] uio_out;
   wire [7:0] uio_oe;
  
-  // Replace tt_um_example with your module name:
-  tt_um_array_multiplier_hhrb98 user_project (
-
-      // Include power ports for the Gate Level test:
-`ifdef GL_TEST
-      .VPWR(1'b1),
-      .VGND(1'b0),
-`endif
-
-      .ui_in [3:0] (a),    // Dedicated inputs
-      .ui_in [7:4] (b),
-      .uo_out (p),   //  
-      .ena(ena),
-      .rst_n(rst_n),
-      .clk    (clk)      // clock
-      
-  );
+// Replace tt_um_example with your module name:
+tt_um_array_multiplier_hhrb98 user_project (
+    // Include power ports for the Gate Level test:
+    .VPWR(1'b1),
+    .VGND(1'b0),
+    .a(ui_in),    // Connect ui_in directly to module's a
+    .b(uio_in),   // Connect uio_in directly to module's b
+    .clk(clk),    // Connect clk directly to module's clk
+    .ena(ena),    // Connect ena directly to module's ena
+    .rst_n(rst_n),// Connect rst_n directly to module's rst_n
+    .p(uo_out)    // Connect uo_out directly to module's p
+);
 endmodule
