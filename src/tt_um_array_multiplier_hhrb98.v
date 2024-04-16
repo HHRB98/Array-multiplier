@@ -9,10 +9,12 @@ module FA(a, b, c, s, ca);
   assign ca = ((a & b) | (b & c) | (c & a));
 endmodule
 
-module tt_um_array_multiplier_hhrb98 (a, b, clk, p);
+module tt_um_array_multiplier_hhrb98 (a, b, clk,ena, rst_n p);
   // Inputs
   input [3:0] a, b;
   input wire clk;
+  input wire ena;
+  input wire rst_n;
   // Outputs
   output [7:0] p;
 
