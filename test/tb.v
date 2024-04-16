@@ -30,7 +30,7 @@ module tb ();
       .a (a),    // Dedicated inputs
       .b (b),   // Dedicated outputs
       .p (p),   // IOs: Input path
-      .clk    (clk),      // clock
+      .clk    (clk)      // clock
       
   );
 endmodule
