@@ -31,8 +31,8 @@ module tb ();
       .VGND(1'b0),
 `endif
 
-      .ui_in[3:0] (a),    // Dedicated inputs
-      .ui_in[7:4] (b),
+      .ui_in [3:0] (a),    // Dedicated inputs
+      .ui_in [7:4] (b),
       .uo_out (p),   //  
       .ena(ena),
       .rst_n(rst_n),
