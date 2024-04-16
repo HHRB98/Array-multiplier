@@ -21,7 +21,7 @@ module tb ();
   reg [7:0] p;
  
   // Replace tt_um_example with your module name:
-  tt_um_array_multiplier_hhrb98 tt_um_array_multiplier_hhrb98(
+  tt_um_array_multiplier_hhrb98(
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
@@ -32,7 +32,7 @@ module tb ();
       .a  (a),    // Dedicated inputs
       .b (b),   // Dedicated outputs
       .p (p),   // IOs: Input path
-      .clk(clk), //clk
+      .clk(clk) //clk
         );
 
 endmodule
