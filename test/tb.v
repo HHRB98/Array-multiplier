@@ -30,8 +30,10 @@ module tb ();
 `endif
 
       .a (a),    // Dedicated inputs
-      .b (b),   // Dedicated outputs
-      .p (p),   // IOs: Input path
+      .b (b),   // 
+      .p (p),   // 
+      .ena(ena),
+      .rst_n(rst_n),
       .clk    (clk)      // clock
       
   );
