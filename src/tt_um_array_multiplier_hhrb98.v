@@ -9,42 +9,45 @@ module FA(a, b, c, s, ca);
   assign ca = ((a & b) | (b & c) | (c & a));
 endmodule
 
-module tt_um_array_multiplier_hhrb98 (a, b, clk, ena, rst_n, p);
+module tt_um_array_multiplier_hhrb98 (ui_in, uo_out);
+    input  wire [7:0] ui_in,    // Dedicated inputs
+    output wire [7:0] uo_out,   // Dedicated outputs
+    input  wire [7:0] uio_in,   // IOs: Input path
+    output wire [7:0] uio_out,  // IOs: Output path
+    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    input  wire       ena,      // will go high when the design is enabled
+    input  wire       clk,      // clock
+    input  wire       rst_n     // reset_n - low to reset
   // Inputs
-  input [3:0] a, b;
-  input wire clk;
-  input wire ena;
-  input wire rst_n;
+  input [7:0] ui_in;
   // Outputs
-  output [7:0] p;
-
-  
+  output [7:0] uo_out;
 
   // Wires
   wire [39:0] w;
 
   // AND gate instantiations
-  and a1(w[0], a[0], b[0]);
-  and a2(w[1], a[1], b[0]);
-  and a3(w[2], a[2], b[0]);
-  and a4(w[3], a[3], b[0]);
+  and a1(w[0], ui_in[0], ui_in[4]);
+  and a2(w[1], ui_in[1], ui_in[4]);
+  and a3(w[2], ui_in[2], ui_in[4]);
+  and a4(w[3], ui_in[3], ui_in[4]);
 
-  and a5(w[4], a[0], b[1]);
-  and a6(w[5], a[1], b[1]);
-  and a7(w[6], a[2], b[1]);
-  and a8(w[7], a[3], b[1]);
+  and a5(w[4], ui_in[0], ui_in[5]);
+  and a6(w[5], ui_in[1], ui_in[5]);
+  and a7(w[6], ui_in[2], ui_in[5]);
+  and a8(w[7], ui_in[3], ui_in[5]);
 
-  and a9(w[8], a[0], b[2]);
-  and a10(w[9], a[1], b[2]);
-  and a11(w[10], a[2], b[2]);
-  and a12(w[11], a[3], b[2]);
+  and a9(w[8], ui_in[0], ui_in[6]);
+  and a10(w[9], ui_in[1], ui_in[6]);
+  and a11(w[10], ui_in[2], ui_in[6]);
+  and a12(w[11], ui_in[3], ui_in[6]);
 
-  and a13(w[12], a[0], b[3]);
-  and a14(w[13], a[1], b[3]);
-  and a15(w[14], a[2], b[3]);
-  and a16(w[15], a[3], b[3]);
+  and a13(w[12], ui_in[0], ui_in[7]);
+  and a14(w[13], ui_in[1], ui_in[7]);
+  and a15(w[14], ui_in[2], ui_in[7]);
+  and a16(w[15], ui_in[3], ui_in[7]);
 
-  assign p[0] = w[0];
+  assign uo_out[0] = w[0];
 
   // Full adders instantiations
   FA a17(1'b0, w[1], w[4], w[16], w[17]);
@@ -64,11 +67,11 @@ module tt_um_array_multiplier_hhrb98 (a, b, clk, ena, rst_n, p);
   FA a28(w[15], w[33], w[37], w[38], w[39]);
 
   // Output assignments
-  assign p[1] = w[16];
-  assign p[2] = w[22];
-  assign p[3] = w[28];
-  assign p[4] = w[34];
-  assign p[5] = w[36];
-  assign p[6] = w[38];
-  assign p[7] = w[39];
+  assign uo_out[1] = w[16];
+  assign uo_out[2] = w[22];
+  assign uo_out[3] = w[28];
+  assign uo_out[4] = w[34];
+  assign uo_out[5] = w[36];
+  assign uo_out[6] = w[38];
+  assign uo_out[7] = w[39];
 endmodule
