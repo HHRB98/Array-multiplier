@@ -17,7 +17,7 @@ module tt_um_array_multiplier_hhrb98 (
     output wire [7:0] uio_out,  // IOs: Output path
     output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
     input wire        clk,
-    input  wire       ena /* verilator lint_on */,
+    input  wire       ena, /* verilator lint_on */
     input  wire       rst_n     
   );
   // Wires
