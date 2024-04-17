@@ -19,12 +19,14 @@ module tt_um_array_multiplier_hhrb98 (
     input wire        clk,
     input  wire       ena,      // will go high when the design is enabled
     input  wire       rst_n,     // reset_n - low to reset
+    input wire a,
+    output wire o
 
   );
   // Wires
  
   always @(posedge clk) begin  
-            uio_out <= uio_in;
+            a <= o;
   end
 
   wire [39:0] w;
