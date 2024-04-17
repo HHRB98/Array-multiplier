@@ -18,7 +18,7 @@ module tt_um_array_multiplier_hhrb98 (
     output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
     input wire clk,
     input  wire       ena,      // will go high when the design is enabled
-    input  wire       rst_n     // reset_n - low to reset
+    input  wire       rst_n,     // reset_n - low to reset
     input wire d,
     output reg q
   );
