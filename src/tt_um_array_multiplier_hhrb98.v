@@ -23,10 +23,9 @@ module tt_um_array_multiplier_hhrb98 (
   );
   // Wires
   wire [39:0] w;
-  always @(posedge clk)
-        uio_out <= uio_in;
-  end
-  
+    always @(posedge clk) begin  
+            uio_in <= 0;
+    end
   // AND gate instantiations
   and a1(w[0], ui_in[0], ui_in[4]);
   and a2(w[1], ui_in[1], ui_in[4]);
