@@ -23,10 +23,16 @@ module tt_um_array_multiplier_hhrb98 (
   // Wires
  
   always @(posedge clk) begin  
-    assign uio_out <= uio_in;
+    if (~rst_n) begin
+      // Reset condition: set uio_out to 0
+      uio_out <= 8'b0;
+    end else begin
+      // Update uio_out with uio_in value
+      uio_out <= uio_in;
+    end
   end
 
-  assign uio_oe =0;
+  assign uio_oe =8'b0;
   assign ena =0;
   assign rst_n =0;
   wire [39:0] w;
