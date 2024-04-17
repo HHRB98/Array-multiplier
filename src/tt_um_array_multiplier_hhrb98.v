@@ -13,8 +13,8 @@ endmodule
 module tt_um_array_multiplier_hhrb98 (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
-    input  wire [7:0] d,   // IOs: Input path
-    output wire [7:0] q,  // IOs: Output path
+    input  wire [7:0] uio_in,   // IOs: Input path
+    output wire [7:0] uio_out,  // IOs: Output path
     output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
     input wire clk,
     input  wire       ena,      // will go high when the design is enabled
@@ -24,7 +24,7 @@ module tt_um_array_multiplier_hhrb98 (
   // Wires
   wire [39:0] w;
   always @(posedge clk)
-        q <= d;
+        uio_out <= uio_in;
   // AND gate instantiations
   and a1(w[0], ui_in[0], ui_in[4]);
   and a2(w[1], ui_in[1], ui_in[4]);
