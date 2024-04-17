@@ -77,4 +77,3 @@ module tt_um_array_multiplier_hhrb98 (
   end
 
 endmodule
-endmodule
