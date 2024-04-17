@@ -36,10 +36,6 @@ end
 
   assign uio_oe =8'b0;
   wire [39:0] w;
-
-
-  assign uio_oe =8'b0;
-  wire [39:0] w;
   // AND gate instantiations
   and a1(w[0], ui_in[0], ui_in[4]);
   and a2(w[1], ui_in[1], ui_in[4]);
