@@ -9,18 +9,6 @@ module FA(a, b, c, s, ca);
   assign ca = ((a & b) | (b & c) | (c & a));
 endmodule
 
-module dff_cell (
-    input wire clk,
-    input wire d,
-    output reg q,
-    output wire notq
-    );
-
-    assign notq = !q;
-    always @(posedge clk)
-        q <= d;
-
-endmodule
 
 module tt_um_array_multiplier_hhrb98 (
     input  wire [7:0] ui_in,    // Dedicated inputs
@@ -28,12 +16,16 @@ module tt_um_array_multiplier_hhrb98 (
     input  wire [7:0] uio_in,   // IOs: Input path
     output wire [7:0] uio_out,  // IOs: Output path
     output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    input wire clk,
     input  wire       ena,      // will go high when the design is enabled
     input  wire       rst_n     // reset_n - low to reset
   );
   // Wires
   wire [39:0] w;
-
+  input wire d;
+  output reg q;
+  always @(posedge clk)
+        q <= d;
   // AND gate instantiations
   and a1(w[0], ui_in[0], ui_in[4]);
   and a2(w[1], ui_in[1], ui_in[4]);
