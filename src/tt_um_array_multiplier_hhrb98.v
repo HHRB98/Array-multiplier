@@ -70,4 +70,11 @@ module tt_um_array_multiplier_hhrb98 (
   assign uo_out[5] = w[36];
   assign uo_out[6] = w[38];
   assign uo_out[7] = w[39];
+
+  
+  always @(posedge clk) begin
+    uio_out <= uio_in;    
+  end
+
+endmodule
 endmodule
