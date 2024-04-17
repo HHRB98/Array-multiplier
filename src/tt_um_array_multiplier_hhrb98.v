@@ -20,13 +20,22 @@ module tt_um_array_multiplier_hhrb98 (
     /* verilator lint_off UNUSEDSIGNAL */ input  wire       ena, 
     input  wire       rst_n     
   );
-  // input
- input a;
- output b;
+  // Wires
+ 
 // Always block to control uio_out
-always @(posedge clk) begin  
-  b<=a;
+always @(posedge clk or negedge rst_n) begin  
+    if (~rst_n) begin
+        // Reset condition: set uio_out to 0
+        uio_out <= 8'b0;
+    end else begin
+        // Update uio_out with uio_in value
+        uio_out <= uio_in;
+    end
 end
+
+
+  assign uio_oe =8'b0;
+  wire [39:0] w;
 
 
   assign uio_oe =8'b0;
