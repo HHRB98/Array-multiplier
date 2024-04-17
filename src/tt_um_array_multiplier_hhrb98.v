@@ -33,8 +33,6 @@ module tt_um_array_multiplier_hhrb98 (
   end
 
   assign uio_oe =8'b0;
-  assign ena =8'b0;
-  assign rst_n =8'b0;
   wire [39:0] w;
   // AND gate instantiations
   and a1(w[0], ui_in[0], ui_in[4]);
