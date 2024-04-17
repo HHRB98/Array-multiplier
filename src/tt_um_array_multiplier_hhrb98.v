@@ -23,7 +23,7 @@ module tt_um_array_multiplier_hhrb98 (
   );
   // Wires
   wire [39:0] w;
-  always @(posedge clk)begin
+  always @(posedge clk)
         uio_out <= uio_in;
   end
   
