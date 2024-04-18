@@ -45,7 +45,7 @@ module tt_um_array_multiplier_hhrb98 (
         variable <= 1'b0; // Changed value to 1-bit
     end else begin
         // Update variable with a value
-        variable <= uio_in; // Assigning ena to variable
+        variable <= 1'b0; // Assigning ena to variable
     end
   end
 
