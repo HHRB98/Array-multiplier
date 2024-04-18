@@ -27,7 +27,6 @@ module tt_um_array_multiplier_hhrb98 (
 
   // Assigning values to output wires
   assign uio_out = 8'b11111111;
-  assign uio_in = 8'b11111111;
   assign uio_oe = 8'b11111111;
     
   // Extracting bits from input
@@ -46,7 +45,7 @@ module tt_um_array_multiplier_hhrb98 (
         variable <= 1'b0; // Changed value to 1-bit
     end else begin
         // Update variable with a value
-        variable <= ena; // Assigning ena to variable
+        variable <= uio_in; // Assigning ena to variable
     end
   end
 
