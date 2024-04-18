@@ -32,6 +32,8 @@ module tt_um_array_multiplier_hhrb98 (
   // Extracting bits from input
   assign a = ui_in[3:0];
   assign b = ui_in[7:4];
+ // Here we use uio_in without modifying the output
+  wire [7:0] additional_input = uio_in;
 
   // Wires
   wire [39:0] w;
