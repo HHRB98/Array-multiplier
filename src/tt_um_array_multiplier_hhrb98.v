@@ -36,18 +36,20 @@ module tt_um_array_multiplier_hhrb98 (
   // Wires
   wire [39:0] w;
 
-  // Flip flop
-  reg variable; // Changed to reg type
+// Flip flop
+reg variable; // Changed to reg type
 
-  always @(posedge clk or negedge rst_n) begin  
+always @(posedge clk or negedge rst_n) begin  
     if (~rst_n) begin
         // Reset condition: set variable to 0
         variable <= 1'b0; // Changed value to 1-bit
     end else begin
-        // Update variable with a value
-        variable <= 1'b0; // Assigning ena to variable
+        // Update variable with a value only when ena is high
+        if (ena) begin
+            variable <= 1'b0; // Assigning 0 to variable when ena is high
+        end
     end
-  end
+end
 
   // AND gate instantiations
   and a1(w[0], a[0], b[0]);
