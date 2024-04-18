@@ -25,83 +25,35 @@ module tt_um_array_multiplier_hhrb98 (
   // Outputs wire
   wire [7:0] p;
 
-  // Assigning values to output wires
-  assign uio_out = 8'b11111111;
-  assign uio_oe = 8'b11111111;
-    
   // Extracting bits from input
   assign a = ui_in[3:0];
   assign b = ui_in[7:4];
- // Here we use uio_in without modifying the output
-  wire [7:0] additional_input = uio_in;
 
-  // Wires
-  wire [39:0] w;
+  // Intermediate wires
+  wire [7:0] p0, p1, p2, p3;
 
-// Flip flop
-reg variable; // Changed to reg type
+  // Partial product calculation
+  assign p0 = a[0] & b;
+  assign p1 = a[1] & b;
+  assign p2 = a[2] & b;
+  assign p3 = a[3] & b;
 
-always @(posedge clk or negedge rst_n) begin  
-    if (~rst_n) begin
-        // Reset condition: set variable to 0
-        variable <= 1'b0; // Changed value to 1-bit
-    end else begin
-        // Update variable with a value only when ena is high
-        if (ena) begin
-            variable <= 1'b0; // Assigning 0 to variable when ena is high
-        end
-    end
-end
+  // Full adders for summing partial products
+  FA fa0(.a(p0), .b(0), .c(0), .s(p[0]), .ca(p0));
+  FA fa1(.a(p1), .b(p0), .c(0), .s(p[1]), .ca(p1));
+  FA fa2(.a(p2), .b(p1), .c(0), .s(p[2]), .ca(p2));
+  FA fa3(.a(p3), .b(p2), .c(0), .s(p[3]), .ca(p3));
 
-  // AND gate instantiations
-  and a1(w[0], a[0], b[0]);
-  and a2(w[1], a[1], b[0]);
-  and a3(w[2], a[2], b[0]);
-  and a4(w[3], a[3], b[0]);
+  // Assigning the remaining bits of the product
+  assign p[4:7] = 0;
 
-  and a5(w[4], a[0], b[1]);
-  and a6(w[5], a[1], b[1]);
-  and a7(w[6], a[2], b[1]);
-  and a8(w[7], a[3], b[1]);
+  // Assigning the output
+  assign uo_out = p;
 
-  and a9(w[8], a[0], b[2]);
-  and a10(w[9], a[1], b[2]);
-  and a11(w[10], a[2], b[2]);
-  and a12(w[11], a[3], b[2]);
+  // Assigning the output enable
+  assign uio_oe = 1;
 
-  and a13(w[12], a[0], b[3]);
-  and a14(w[13], a[1], b[3]);
-  and a15(w[14], a[2], b[3]);
-  and a16(w[15], a[3], b[3]);
-
-  assign p[0] = w[0];
-
-  // Full adders instantiations
-  FA a17(1'b0, w[1], w[4], w[16], w[17]);
-  FA a18(1'b0, w[2], w[5], w[18], w[19]);
-  FA a19(1'b0, w[3], w[6], w[20], w[21]);
-
-  FA a20(w[8], w[17], w[18], w[22], w[23]);
-  FA a21(w[9], w[19], w[20], w[24], w[25]);
-  FA a22(w[10], w[7], w[21], w[26], w[27]);
-
-  FA a23(w[12], w[23], w[24], w[28], w[29]);
-  FA a24(w[13], w[25], w[26], w[30], w[31]);
-  FA a25(w[14], w[11], w[27], w[32], w[33]);
-
-  FA a26(1'b0, w[29], w[30], w[34], w[35]);
-  FA a27(w[31], w[32], w[35], w[36], w[37]);
-  FA a28(w[15], w[33], w[37], w[38], w[39]);
-
-  // Output assignments
-  assign p[1] = w[16];
-  assign p[2] = w[22];
-  assign p[3] = w[28];
-  assign p[4] = w[34];
-  assign p[5] = w[36];
-  assign p[6] = w[38];
-  assign p[7] = w[39];
-
-  assign uo_out[7:0] = p[7:0];
+  // Assigning the input/output path
+  assign uio_out = uio_in;
 
 endmodule
