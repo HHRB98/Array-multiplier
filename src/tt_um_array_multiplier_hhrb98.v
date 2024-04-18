@@ -34,7 +34,6 @@ always @(posedge clk or negedge rst_n) begin
 end
 
 
-  assign uio_in =8'b0;
   assign uio_out =8'b0;
   assign uio_oe =8'b0;
   wire [39:0] w;
