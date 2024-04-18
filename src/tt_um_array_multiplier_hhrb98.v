@@ -21,19 +21,21 @@ module tt_um_array_multiplier_hhrb98 (
     input  wire       rst_n     
   );
   // Wires
- 
+ reg variable;
 // Always block to control uio_out
 always @(posedge clk or negedge rst_n) begin  
     if (~rst_n) begin
         // Reset condition: set uio_out to 0
-        uio_out <= 8'b0;
+        variable <= 8'b0;
     end else begin
         // Update uio_out with uio_in value
-        uio_out <= uio_in;
+        variable <= 1;
     end
 end
 
 
+  assign uio_in =8'b0;
+  assign uio_out =8'b0;
   assign uio_oe =8'b0;
   wire [39:0] w;
   // AND gate instantiations
